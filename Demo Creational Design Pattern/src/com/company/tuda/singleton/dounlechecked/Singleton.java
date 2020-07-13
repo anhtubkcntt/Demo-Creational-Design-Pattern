@@ -11,6 +11,12 @@ public class Singleton {
 
   public static Singleton getInstance() {
     if (uniqueInstance == null) {
+      try {
+        System.out.println("sleeping first time...");
+        Thread.currentThread().sleep(50);
+      } catch (InterruptedException ex) {
+        System.out.println("Sleep interrupted");
+      }
       synchronized (Singleton.class) {
         if (uniqueInstance == null) {
           simulateRandomActivity();
